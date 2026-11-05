@@ -754,7 +754,7 @@ a {
 
 .rsvp-card__form {
     position: relative;
-    padding: 4px 24px 18px;
+    padding: 22px 22px 18px;
 }
 
 .rsvp-card__form iframe {
@@ -802,7 +802,7 @@ a {
 
 @media (min-width: 760px) {
     .rsvp-card__form {
-        padding: 8px 40px 26px;
+        padding: 28px 40px 26px;
     }
 }
 
