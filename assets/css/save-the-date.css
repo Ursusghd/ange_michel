@@ -880,3 +880,46 @@ a {
         transform: none;
     }
 }
+
+/* ---------- Quitter le site ---------- */
+
+.footer__quit {
+    margin-top: 26px;
+}
+
+.farewell {
+    position: fixed;
+    inset: 0;
+    z-index: 110;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 24px 20px;
+    overflow: hidden;
+    text-align: center;
+    background: var(--grain), radial-gradient(120% 90% at 50% 10%, #F3F5EE 0%, #DCE4D3 50%, #BCCAB0 100%);
+    animation: farewell-in .6s ease;
+}
+
+.farewell__names {
+    padding: 0 .2em;
+    font-family: var(--font-script);
+    font-size: clamp(3rem, 14vw, 4.2rem);
+    line-height: 1.2;
+}
+
+.farewell__text {
+    max-width: 30ch;
+    margin: 6px 0 26px;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+@keyframes farewell-in {
+    from {
+        opacity: 0;
+    }
+}

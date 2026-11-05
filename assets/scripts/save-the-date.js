@@ -177,3 +177,25 @@ if (typeof Tally !== 'undefined') {
     script.onerror = loadTallyEmbeds;
     document.body.appendChild(script);
 }
+
+// ========== Quitter le site ==========
+// Un navigateur n'autorise la fermeture que dans certains cas (onglet ouvert par un lien, WhatsApp…).
+// Si l'onglet reste ouvert, on affiche un écran d'au revoir.
+const farewell = document.getElementById('farewell');
+
+document.getElementById('quit').addEventListener('click', () => {
+    window.close();
+    setTimeout(() => {
+        farewell.hidden = false;
+        site.inert = true;
+        root.classList.add('is-locked');
+        document.getElementById('farewell-back').focus();
+    }, 300);
+});
+
+document.getElementById('farewell-back').addEventListener('click', () => {
+    farewell.hidden = true;
+    site.inert = false;
+    root.classList.remove('is-locked');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});

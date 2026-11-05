@@ -148,9 +148,20 @@
         <footer class="footer">
             <p class="script gold-text">Ange <span class="et">&amp;</span> Michel</p>
             <p class="over">12 · 12 · 2026 · Yaoundé</p>
+            <button class="btn btn--ghost footer__quit" id="quit" type="button">Quitter le site</button>
             <p class="credit">&copy; <span id="year">2026</span> STRIDE Events</p>
         </footer>
     </main>
+
+    <!-- Écran d'au revoir (si le navigateur refuse de fermer l'onglet) -->
+    <div class="farewell" id="farewell" role="dialog" aria-modal="true" aria-labelledby="farewell-title" hidden>
+        <img src="assets/images/fleur11.svg" class="env-deco f1" alt="">
+        <img src="assets/images/fleur11.svg" class="env-deco f2" alt="">
+        <p class="over">Merci de votre visite</p>
+        <p class="farewell__names gold-text" id="farewell-title">Ange <span class="et">&amp;</span> Michel</p>
+        <p class="farewell__text">À très bientôt, le samedi 12 décembre 2026.<br>Vous pouvez maintenant fermer cette page.</p>
+        <button class="btn btn--ghost" id="farewell-back" type="button">Revenir au site</button>
+    </div>
 </body>
 
 </html>
