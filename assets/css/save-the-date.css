@@ -1,0 +1,882 @@
+/* ==========================================================================
+   Save the Date · Ange & Michel
+   Vert sauge & or champagne
+   ========================================================================== */
+
+:root {
+    --sage-900: #2F3B2C;
+    --sage-700: #4B5C44;
+    --sage-500: #7F9273;
+    --sage-300: #BCC9B1;
+    --sage-200: #D3DCC8;
+    --sage-100: #E6ECDF;
+    --text-muted: #56634F;
+
+    --champagne: #FBF8F1;
+    --champagne-200: #EFE5D2;
+
+    --gold-300: #E3CB98;
+    --gold-500: #B8955A;
+    --gold-600: #9C7B45;
+    --gold-700: #876834;
+    --gold-gradient: linear-gradient(100deg, #8A6A35 0%, #C9A86C 30%, #A3834A 52%, #DDC28C 74%, #8A6A35 100%);
+
+    --font-script: 'Pinyon Script', cursive;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Montserrat', system-ui, sans-serif;
+
+    --shadow: 0 30px 60px -32px rgba(40, 52, 36, .6);
+    --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .07 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+html.is-locked,
+html.is-locked body {
+    overflow: hidden;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    line-height: 1.55;
+    color: var(--sage-900);
+    background-color: var(--sage-100);
+    background-image:
+        var(--grain),
+        radial-gradient(120% 55% at 50% 0%, #F5F6F0 0%, #E4EADD 45%, #CCD6C0 100%);
+    background-attachment: scroll, fixed;
+}
+
+p,
+h2,
+h3,
+ul {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+:focus-visible {
+    outline: 2px solid var(--gold-600);
+    outline-offset: 4px;
+    border-radius: 6px;
+}
+
+.gold-text {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.over {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: .72rem;
+    line-height: 1.5;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--gold-700);
+}
+
+.script {
+    display: inline-block;
+    padding: 0 .15em;
+    font-family: var(--font-script);
+    font-size: clamp(2.8rem, 12vw, 3.6rem);
+    line-height: 1.2;
+}
+
+/* L'esperluette de Pinyon Script est peu lisible : on prend celle du Cormorant */
+.et {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: .78em;
+    padding: 0 .06em;
+}
+
+/* ---------- Boutons ---------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 50px;
+    padding: 0 26px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: .72rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.btn--primary {
+    background: var(--sage-700);
+    color: var(--champagne);
+    box-shadow: 0 12px 24px -14px rgba(43, 55, 38, .8), inset 0 0 0 1px rgba(227, 203, 152, .45);
+}
+
+.btn--primary:hover {
+    background: var(--sage-900);
+}
+
+.btn--ghost {
+    background: rgba(255, 255, 255, .55);
+    color: var(--sage-700);
+    border-color: var(--gold-500);
+}
+
+.btn--ghost:hover {
+    background: rgba(255, 255, 255, .92);
+    border-color: var(--gold-700);
+}
+
+/* ==========================================================================
+   Enveloppe d'ouverture
+   ========================================================================== */
+
+.envelope-screen {
+    display: none;
+}
+
+.js .envelope-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
+    text-align: center;
+    background: var(--grain), radial-gradient(120% 90% at 50% 10%, #F3F5EE 0%, #DCE4D3 50%, #BCCAB0 100%);
+    overflow: hidden;
+    transition: opacity .8s ease, visibility 0s linear .8s;
+}
+
+.envelope-screen.is-gone {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.env-deco {
+    position: absolute;
+    width: 190px;
+    pointer-events: none;
+}
+
+.env-deco.f1 {
+    top: -40px;
+    left: -50px;
+    transform: rotate(-100deg);
+}
+
+.env-deco.f2 {
+    right: -50px;
+    bottom: -40px;
+    transform: rotate(80deg);
+}
+
+.envelope-title {
+    padding: 0 .2em;
+    font-family: var(--font-script);
+    font-size: clamp(3rem, 14vw, 4rem);
+    line-height: 1.2;
+}
+
+.envelope {
+    position: relative;
+    width: min(84vw, 380px);
+    aspect-ratio: 3 / 2;
+    margin: clamp(70px, 15vh, 120px) 0 24px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.envelope:focus-visible {
+    outline-offset: 10px;
+}
+
+.envelope__back {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #E5DAC4, #D8CAAE);
+    box-shadow: 0 34px 50px -26px rgba(43, 55, 38, .6);
+}
+
+/* La lettre glissée dans l'enveloppe : le haut du Save the Date */
+.envelope__letter {
+    position: absolute;
+    left: 7%;
+    right: 7%;
+    top: 6%;
+    bottom: 8%;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 4px;
+    background: var(--champagne);
+    box-shadow: 0 0 0 1px rgba(184, 149, 90, .35);
+    transition: transform 1s cubic-bezier(.2, .7, .2, 1) .7s;
+}
+
+.envelope__letter img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.envelope__pocket {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.envelope__pocket::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #EEE5D2, #E3D7BE 50%, #EEE5D2);
+    clip-path: polygon(0 0, 50% 56%, 100% 0, 100% 100%, 0 100%);
+}
+
+.envelope__pocket::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, #F4ECDC, #E9DEC7);
+    clip-path: polygon(0 100%, 50% 46%, 100% 100%);
+}
+
+.envelope__flap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 62%;
+    z-index: 3;
+    transform-origin: top center;
+    transform: perspective(900px) rotateX(0deg);
+    transition: transform .8s cubic-bezier(.4, 0, .2, 1) .2s, z-index 0s linear .6s;
+}
+
+.envelope__flap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 8px 8px 0 0;
+    background: linear-gradient(180deg, #E2D5BA, #D6C6A6);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.envelope__seal {
+    position: absolute;
+    left: 50%;
+    top: 62%;
+    width: 82px;
+    height: 80px;
+    z-index: 4;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 6px 7px rgba(80, 60, 20, .35));
+    transition: transform .35s ease, opacity .35s ease;
+    animation: seal-breathe 2.6s ease-in-out infinite;
+}
+
+.envelope:hover .envelope__seal {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+.envelope-hint {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: .7rem;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    color: var(--gold-700);
+    animation: breathe 2.6s ease-in-out infinite;
+}
+
+.envelope-date {
+    margin-top: 18px;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--text-muted);
+}
+
+.envelope-screen.is-open .envelope__seal {
+    transform: translate(-50%, -50%) scale(.6);
+    opacity: 0;
+    animation: none;
+}
+
+.envelope-screen.is-open .envelope__flap {
+    transform: perspective(900px) rotateX(180deg);
+    z-index: 0;
+}
+
+.envelope-screen.is-open .envelope__letter {
+    transform: translateY(-58%);
+}
+
+.envelope-screen.is-open .envelope-hint {
+    opacity: 0;
+    animation: none;
+    transition: opacity .3s;
+}
+
+@keyframes seal-breathe {
+    50% {
+        filter: drop-shadow(0 6px 12px rgba(184, 149, 90, .75));
+    }
+}
+
+@keyframes breathe {
+    50% {
+        opacity: .45;
+    }
+}
+
+/* ==========================================================================
+   Save the Date
+   ========================================================================== */
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 44px;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 40px 16px 56px;
+    text-align: center;
+}
+
+.hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 460px;
+}
+
+.hero__names {
+    margin: 4px 0 0;
+    padding: 0 .2em;
+    font-family: var(--font-script);
+    font-weight: 400;
+    font-size: clamp(3.2rem, 15vw, 5.2rem);
+    line-height: 1.15;
+    white-space: nowrap;
+}
+
+.hero__date {
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+}
+
+.std-card {
+    position: relative;
+    display: block;
+    flex: none;
+    width: min(100%, 420px);
+    border-radius: 8px;
+    box-shadow: var(--shadow), 0 0 0 1px rgba(255, 255, 255, .7);
+    outline: 1px solid rgba(184, 149, 90, .45);
+    outline-offset: 9px;
+    transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.std-card:hover {
+    transform: translateY(-4px);
+}
+
+.std-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* ---------- Compte à rebours ---------- */
+
+.countdown {
+    width: 100%;
+    margin-top: 28px;
+}
+
+.countdown__label,
+.reminder__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: .66rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--gold-700);
+}
+
+.countdown__label::before,
+.countdown__label::after,
+.reminder__label::before,
+.reminder__label::after {
+    content: '';
+    width: 36px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-500));
+}
+
+.countdown__label::after,
+.reminder__label::after {
+    transform: scaleX(-1);
+}
+
+.countdown__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.countdown__cell {
+    padding: 16px 4px 12px;
+    border-radius: 18px;
+    background: rgba(251, 248, 241, .8);
+    border: 1px solid rgba(205, 174, 114, .5);
+    box-shadow: 0 16px 30px -22px rgba(40, 52, 36, .6);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+}
+
+.countdown__num {
+    display: block;
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(2rem, 9vw, 2.6rem);
+    font-variant-numeric: lining-nums tabular-nums;
+    line-height: 1;
+    color: var(--sage-900);
+}
+
+.countdown__unit {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: .56rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold-700);
+}
+
+.countdown__done {
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--gold-700);
+}
+
+/* ---------- Rappel dans l'agenda ---------- */
+
+.reminder {
+    width: 100%;
+    margin-top: 26px;
+}
+
+.reminder__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    flex: none;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.hero__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.hero__actions .btn--primary {
+    min-width: 270px;
+}
+
+.hero__save {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: .64rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold-700);
+    text-underline-offset: 4px;
+}
+
+/* ---------- Décor : roses et pétales ---------- */
+
+.decor {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.site {
+    position: relative;
+    z-index: 1;
+}
+
+.decor__fleur {
+    position: absolute;
+    display: none;
+    filter: drop-shadow(0 14px 18px rgba(60, 70, 40, .2));
+    animation: sway 10s ease-in-out infinite alternate;
+}
+
+@keyframes sway {
+    from {
+        transform: rotate(var(--r));
+    }
+
+    to {
+        transform: rotate(calc(var(--r) + 6deg));
+    }
+}
+
+.petal {
+    position: absolute;
+    top: -40px;
+    left: var(--x);
+    width: var(--s);
+    height: calc(var(--s) * .78);
+    border-radius: 150% 0 150% 0;
+    background: linear-gradient(135deg, var(--c1), var(--c2));
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35);
+    opacity: 0;
+    animation: fall var(--t) linear var(--delay) infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translate3d(0, -5vh, 0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: .85;
+    }
+
+    50% {
+        transform: translate3d(var(--drift), 52vh, 0) rotate(190deg);
+    }
+
+    90% {
+        opacity: .85;
+    }
+
+    100% {
+        transform: translate3d(calc(var(--drift) * -.4), 108vh, 0) rotate(380deg);
+        opacity: 0;
+    }
+}
+
+/* Apparition après l'ouverture de l'enveloppe */
+.js [data-anim] {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .9s ease, transform 1s cubic-bezier(.2, .7, .2, 1);
+    transition-delay: calc(var(--d, 0) * 160ms);
+}
+
+.js .std-card[data-anim] {
+    transform: translateY(30px) scale(.96);
+}
+
+.js.is-revealed [data-anim] {
+    opacity: 1;
+    transform: none;
+}
+
+.js.is-revealed .std-card[data-anim]:hover {
+    transform: translateY(-4px);
+    transition-delay: 0s;
+}
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+.section {
+    position: relative;
+    padding: 76px 16px;
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(transparent, var(--gold-500));
+}
+
+.section__head {
+    max-width: 540px;
+    margin: 0 auto 32px;
+    text-align: center;
+}
+
+.section__title {
+    margin-top: -6px;
+    padding-left: .18em;
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(1.45rem, 6vw, 1.85rem);
+    line-height: 1.2;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--sage-700);
+}
+
+.section__intro {
+    max-width: 34ch;
+    margin: 14px auto 0;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.js .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity .8s ease, transform .8s cubic-bezier(.2, .7, .2, 1);
+}
+
+.js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ---------- Formulaire Tally ---------- */
+
+.rsvp-card {
+    position: relative;
+    max-width: 660px;
+    margin: 0 auto;
+    border-radius: 26px;
+    background: var(--champagne);
+    box-shadow: var(--shadow), inset 0 0 0 1px rgba(255, 255, 255, .85);
+}
+
+.rsvp-card::after {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(205, 174, 114, .45);
+    border-radius: 18px;
+    pointer-events: none;
+}
+
+.rsvp-card__banner {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 1;
+    object-fit: cover;
+    border-radius: 26px 26px 0 0;
+}
+
+.rsvp-card__icon {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 88px;
+    height: 88px;
+    margin: -44px 0 0 28px;
+    border-radius: 50%;
+    box-shadow: 0 10px 20px -10px rgba(43, 55, 38, .6);
+}
+
+.rsvp-card__form {
+    position: relative;
+    padding: 4px 24px 18px;
+}
+
+.rsvp-card__form iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+}
+
+.rsvp-alt {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+}
+
+.rsvp-alt a {
+    color: var(--gold-700);
+    text-underline-offset: 3px;
+}
+
+/* ---------- Pied de page ---------- */
+
+.footer {
+    padding: 56px 16px calc(40px + env(safe-area-inset-bottom));
+    text-align: center;
+}
+
+.footer .script {
+    font-size: 3.2rem;
+}
+
+.credit {
+    margin-top: 22px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: .66rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Responsive & accessibilité
+   ========================================================================== */
+
+@media (min-width: 760px) {
+    .rsvp-card__form {
+        padding: 8px 40px 26px;
+    }
+}
+
+/* Grand écran : Save the Date à gauche, texte à droite, roses aux bords */
+@media (min-width: 1000px) {
+    .hero {
+        flex-direction: row;
+        gap: clamp(48px, 6vw, 100px);
+        padding: 48px 64px;
+    }
+
+    .std-card {
+        width: min(470px, calc((100vh - 110px) * 1080 / 1527));
+    }
+
+    .hero__content {
+        flex: 0 1 460px;
+    }
+
+    .hero__names {
+        font-size: clamp(3.4rem, 4.6vw, 4.4rem);
+    }
+
+    .decor__fleur {
+        display: block;
+    }
+
+    .decor__fleur--tl {
+        top: -70px;
+        left: -60px;
+        width: 300px;
+        --r: -100deg;
+    }
+
+    .decor__fleur--br {
+        right: -60px;
+        bottom: -70px;
+        width: 300px;
+        --r: 80deg;
+    }
+
+    .decor__fleur--ml {
+        left: -40px;
+        bottom: 18%;
+        width: 190px;
+        --r: -20deg;
+        opacity: .9;
+    }
+
+    .decor__fleur--mr {
+        right: -30px;
+        top: 16%;
+        width: 190px;
+        --r: 160deg;
+        opacity: .9;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition-duration: .01ms !important;
+        transition-delay: 0s !important;
+    }
+
+    .js .reveal,
+    .js [data-anim] {
+        opacity: 1;
+        transform: none;
+    }
+}

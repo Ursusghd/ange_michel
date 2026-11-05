@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#DCE4D3">
+    <title>Save the Date · Ange & Michel · 12 décembre 2026</title>
+    <meta name="description" content="Ange & Michel se marient le samedi 12 décembre 2026 à Yaoundé. Découvrez le Save the Date et confirmez votre présence.">
+
+    <!-- Aperçu du lien (WhatsApp, Facebook…) : l'image doit être une URL absolue.
+         À adapter à l'adresse réelle du site une fois en ligne (ici : GitHub Pages). -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Save the Date · Ange & Michel">
+    <meta property="og:description" content="Samedi 12 décembre 2026 · Yaoundé, Cameroun">
+    <meta property="og:image" content="https://ursusghd.github.io/ange_michel/assets/images/ange-michel/apercu.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@500;600&family=Pinyon+Script&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/images/ange-michel/icone-fleur.png">
+    <link rel="stylesheet" href="assets/css/save-the-date.css">
+
+    <script>document.documentElement.classList.add('js', 'is-locked');</script>
+    <script src="assets/scripts/save-the-date.js" defer></script>
+</head>
+
+<body>
+    <!-- ========== Enveloppe d'ouverture ========== -->
+    <div class="envelope-screen" id="envelope" role="dialog" aria-modal="true" aria-labelledby="envelope-title">
+        <img src="assets/images/fleur11.svg" class="env-deco f1" alt="">
+        <img src="assets/images/fleur11.svg" class="env-deco f2" alt="">
+
+        <p class="over">Save the Date</p>
+        <p class="envelope-title gold-text" id="envelope-title">Ange <span class="et">&amp;</span> Michel</p>
+
+        <button class="envelope" id="open-envelope" type="button" aria-label="Ouvrir le Save the Date">
+            <span class="envelope__back"></span>
+            <span class="envelope__letter">
+                <img src="assets/images/ange-michel/save-the-date.jpg" alt="">
+            </span>
+            <span class="envelope__pocket"></span>
+            <span class="envelope__flap"></span>
+            <svg class="envelope__seal" viewBox="0 0 124 120" aria-hidden="true">
+                <defs>
+                    <radialGradient id="wax" cx="38%" cy="32%" r="78%">
+                        <stop offset="0" stop-color="#EDD9AA" />
+                        <stop offset=".45" stop-color="#C9A766" />
+                        <stop offset="1" stop-color="#8A6A35" />
+                    </radialGradient>
+                </defs>
+                <path fill="url(#wax)" d="M115.2,57.3 Q114.8,60.0 113.3,62.6 Q111.9,65.1 111.0,67.5 Q110.0,70.0 110.0,72.6 Q110.0,75.2 109.6,77.8 Q109.3,80.4 107.6,82.5 Q106.0,84.6 103.7,86.1 Q101.3,87.6 99.5,89.3 Q97.7,90.9 96.3,93.0 Q95.0,95.0 93.6,97.1 Q92.1,99.1 90.3,100.9 Q88.6,102.7 86.8,104.8 Q85.1,106.9 83.2,109.2 Q81.3,111.5 78.9,112.8 Q76.4,114.2 73.5,113.8 Q70.6,113.4 67.8,112.1 Q65.0,110.8 62.5,110.3 Q60.0,109.8 57.5,110.3 Q55.0,110.7 52.4,110.8 Q49.9,110.9 47.5,109.8 Q45.2,108.8 43.1,107.5 Q40.9,106.1 38.6,105.1 Q36.4,104.2 34.0,103.4 Q31.6,102.5 29.4,101.2 Q27.3,99.9 25.2,98.3 Q23.2,96.8 20.8,95.5 Q18.3,94.2 15.8,92.7 Q13.2,91.3 11.7,88.9 Q10.3,86.6 10.5,83.5 Q10.8,80.4 11.6,77.4 Q12.4,74.4 12.3,72.0 Q12.2,69.5 11.2,67.2 Q10.3,64.9 9.7,62.4 Q9.2,60.0 9.4,57.5 Q9.6,55.0 9.8,52.5 Q10.1,50.1 10.1,47.5 Q10.1,44.9 10.7,42.3 Q11.2,39.8 12.5,37.5 Q13.8,35.3 15.2,33.1 Q16.5,31.0 17.4,28.4 Q18.3,25.8 19.3,23.1 Q20.4,20.4 22.7,18.8 Q24.9,17.3 28.1,17.1 Q31.2,16.9 34.1,17.0 Q37.1,17.1 39.3,16.3 Q41.5,15.4 43.6,14.0 Q45.6,12.6 47.9,11.5 Q50.1,10.5 52.6,9.8 Q55.0,9.1 57.5,8.3 Q60.0,7.4 62.7,6.8 Q65.3,6.1 67.9,6.5 Q70.6,6.9 72.9,8.2 Q75.3,9.6 77.6,10.8 Q79.9,12.0 82.5,12.5 Q85.2,12.9 87.8,13.7 Q90.5,14.4 92.3,16.4 Q94.1,18.5 94.9,21.4 Q95.7,24.3 96.5,26.9 Q97.3,29.4 98.8,31.2 Q100.3,33.1 102.1,34.8 Q103.9,36.5 105.4,38.6 Q106.9,40.6 108.4,42.7 Q109.8,44.9 111.6,47.1 Q113.3,49.4 114.4,52.0 Q115.6,54.5 115.2,57.3Z" />
+                <circle cx="62" cy="60" r="35" fill="none" stroke="#7E602F" stroke-opacity=".5" stroke-width="2" />
+                <circle cx="62" cy="60" r="30" fill="none" stroke="#F5E7C4" stroke-opacity=".55" stroke-width="1" />
+                <text x="62" y="70" text-anchor="middle" font-family="Pinyon Script, cursive" font-size="29" fill="#6F5429">A&amp;M</text>
+            </svg>
+        </button>
+
+        <p class="envelope-hint" aria-hidden="true">Touchez le sceau pour ouvrir</p>
+        <p class="envelope-date">Samedi 12 décembre 2026 · Yaoundé</p>
+    </div>
+
+    <!-- ========== Décor d'arrière-plan : roses aux bords et pétales qui tombent ========== -->
+    <div class="decor" aria-hidden="true">
+        <img src="assets/images/fleur11.svg" class="decor__fleur decor__fleur--tl" alt="">
+        <img src="assets/images/fleur11.svg" class="decor__fleur decor__fleur--br" alt="">
+        <img src="assets/images/fleur11.svg" class="decor__fleur decor__fleur--ml" alt="">
+        <img src="assets/images/fleur11.svg" class="decor__fleur decor__fleur--mr" alt="">
+        <div class="petals" id="petals"></div>
+    </div>
+
+    <main class="site" id="site">
+        <!-- ========== Save the Date ========== -->
+        <section class="hero" id="save-the-date">
+            <a class="std-card" href="assets/images/ange-michel/save-the-date.jpg" target="_blank" rel="noopener"
+                data-anim style="--d: 0">
+                <img src="assets/images/ange-michel/save-the-date.jpg" width="1080" height="1527"
+                    alt="Save the Date, Élégance naturelle. Ange & Michel, samedi 12 décembre 2026, Yaoundé, Cameroun. 09h00 : mariage civil à la Mairie d'Efoulan. 12h00 : vin d'honneur à la salle des fêtes de la paroisse Saint-Marc de Biyem-Assi. 14h00 : cérémonie religieuse à la paroisse Saint-Marc de Biyem-Assi.">
+            </a>
+
+            <div class="hero__content">
+                <p class="over" data-anim style="--d: 1">Ils vous annoncent leur mariage</p>
+                <h1 class="hero__names gold-text" data-anim style="--d: 1">Ange <span class="et">&amp;</span> Michel</h1>
+                <p class="hero__date" data-anim style="--d: 2">Samedi 12 décembre 2026 · Yaoundé, Cameroun</p>
+
+                <div class="countdown" data-anim style="--d: 3">
+                    <p class="countdown__label">Le grand jour dans</p>
+                    <div class="countdown__grid" role="timer" aria-label="Temps restant avant le mariage">
+                        <div class="countdown__cell"><span class="countdown__num" data-unit="jours">--</span><span class="countdown__unit">Jours</span></div>
+                        <div class="countdown__cell"><span class="countdown__num" data-unit="heures">--</span><span class="countdown__unit">Heures</span></div>
+                        <div class="countdown__cell"><span class="countdown__num" data-unit="minutes">--</span><span class="countdown__unit">Minutes</span></div>
+                        <div class="countdown__cell"><span class="countdown__num" data-unit="secondes">--</span><span class="countdown__unit">Secondes</span></div>
+                    </div>
+                    <p class="countdown__done" hidden>C'est aujourd'hui, nous avons hâte de vous voir !</p>
+                </div>
+
+                <div class="reminder" data-anim style="--d: 4">
+                    <p class="reminder__label">Ajouter un rappel</p>
+                    <div class="reminder__buttons">
+                        <a class="btn btn--ghost" id="cal-google" href="#" target="_blank" rel="noopener">
+                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18M10 16h4M12 14v4" /></svg>
+                            Google Agenda
+                        </a>
+                        <button class="btn btn--ghost" id="cal-ics" type="button">
+                            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 2v4M16 2v4" /><rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18M10 16h4M12 14v4" /></svg>
+                            Apple / Outlook
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hero__actions" data-anim style="--d: 5">
+                    <a class="btn btn--primary" href="#rsvp">Confirmer ma présence</a>
+                    <a class="hero__save" href="assets/images/ange-michel/save-the-date.jpg"
+                        download="Save-the-Date-Ange-Michel.jpg">Enregistrer le Save the Date</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== Confirmation de présence (formulaire Tally) ========== -->
+        <section class="section" id="rsvp" aria-labelledby="rsvp-titre">
+            <header class="section__head reveal">
+                <p class="script gold-text">Confirmez</p>
+                <h2 class="section__title" id="rsvp-titre">votre présence</h2>
+                <p class="section__intro">Quelques secondes suffisent : dites-nous si vous serez des nôtres et, si
+                    vous le souhaitez, choisissez un cadeau dans notre wish list.</p>
+            </header>
+
+            <div class="rsvp-card reveal">
+                <img class="rsvp-card__banner" src="assets/images/ange-michel/banniere.jpg" width="1200" height="400"
+                    loading="lazy" alt="Confirmation de présence, Ange & Michel, samedi 12 décembre 2026, Yaoundé">
+                <img class="rsvp-card__icon" src="assets/images/ange-michel/icone-fleur.png" width="96" height="96" alt="">
+                <div class="rsvp-card__form">
+                    <iframe data-tally-src="https://tally.so/embed/DqKByX?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                        width="100%" height="760" frameborder="0" marginheight="0" marginwidth="0"
+                        title="Confirmation de présence au mariage d'Ange & Michel"></iframe>
+                </div>
+            </div>
+            <p class="rsvp-alt">Le formulaire ne s'affiche pas ?
+                <a href="https://tally.so/r/DqKByX" target="_blank" rel="noopener">Ouvrez-le dans une nouvelle page</a>.
+            </p>
+        </section>
+
+        <footer class="footer">
+            <p class="script gold-text">Ange <span class="et">&amp;</span> Michel</p>
+            <p class="over">12 · 12 · 2026 · Yaoundé</p>
+            <p class="credit">&copy; <span id="year">2026</span> STRIDE Events</p>
+        </footer>
+    </main>
+</body>
+
+</html>
